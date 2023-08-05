@@ -1,0 +1,1038 @@
+{% if request.user.is_authenticated %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign in to account</title>
+    <!-- <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="/static/navbar.css"> -->
+    <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/style1.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
+
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-6883622550208397",
+            enable_page_level_ads: true
+        });
+    </script>
+    <style>
+        .Image {
+            display: flex;
+            justify-content: space-around;
+            background-image: url('/static/backpng.png');
+            background-size: 200px 244px;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .Image img {
+            position: relative;
+            border: solid;
+            height: 250px;
+            width: 200px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        @media only screen and (max-width: 600px) and (min-width: 250px) {
+            .Image {
+                display: flex;
+                justify-content: space-around;
+                background-image: url('/static/backpng.png');
+                background-size: 200px 244px;
+                background-repeat: no-repeat;
+            }
+
+            .Image img {
+                position: relative;
+                border: solid;
+                height: 250px;
+                width: 200px;
+                border-radius: 15px;
+                margin-bottom: 25px;
+            }
+
+            .lj {
+                font-size: 22px;
+                font-family: Roboto-Bold;
+
+            }
+
+            .lj1 {
+                font-size: 12px;
+                font-family: roboto-medium;
+                color: #2b70b4;
+            }
+        }
+
+        .lj {
+            float: left;
+            width: 100%;
+            margin: 20px 0px 10px;
+            font-family: Roboto-Bold;
+            font-size: 30px;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+
+        }
+
+        .lj1 {
+            float: left;
+            width: 100%;
+            margin: 0px;
+            font-family: roboto-medium;
+            font-size: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            color: #2b70b4;
+        }
+
+        .under-line {
+            float: left;
+            clear: both;
+            width: 100%;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0px;
+        }
+
+        .profile-menu .dropdown-menu {
+            right: 0;
+            left: unset;
+        }
+
+        .profile-menu .fa-fw {
+            margin-right: 10px;
+        }
+
+        .toggle-change::after {
+            border-top: 0;
+            border-bottom: 0.3em solid;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard">
+                <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZGF0YS1uYW1lPSJMYXllciAxIiBpZD0iTGF5ZXJfMSIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0id2hpdGUiIGQ9Ik01MDQuMzMsNDQ5Yy0xLjc3LTYuOC00NC43My0xNjcuNTItMTY0LjIxLTIzMi45MS00NC42NS0yNC40My05Ni4yLTQxLjQ1LTE0Ni01Ny45MUMxMTUsMTMyLjA4LDQwLjI5LDEwNy40MiwyNiw1OS42NWE2LjIyLDYuMjIsMCwwLDAtMTIsLjI0Yy0uOSwzLjUtMjEuNTMsODYuMzgsMTUuNjUsMTM3Ljk0LDE2LjgsMjMuMjksNDIuNjYsMzYuMzMsNzYuODUsMzguNzUsMi44OC4yLDUuNjEuNDIsOC40NC42Myw0LjE1LDE1LjE2LDIyLjE0LDYwLjYzLDg5LjYxLDY2LDEyLjI1LDEsMjQuMTcsMi4yNSwzNS45LDMuNjUsNC45MiwxNC4xNiwyNi44NCw1Ny42LDExNCw3My4wNyw2Mi43OCwxMS4xNCwxMTQsMzEuMTgsMTMxLjIxLDUxLjI1LDQuMzksMTIuNjgsNi41MywyMC42Miw2LjYzLDIxYTYuMiw2LjIsMCwwLDAsNiw0LjY1LDYuNTYsNi41NiwwLDAsMCwxLjU3LS4yQTYuMjMsNi4yMywwLDAsMCw1MDQuMzMsNDQ5Wk0zOS43NCwxOTAuNThDMTYsMTU3LjczLDE4Ljc1LDEwOC41MiwyMi41NSw4MS44M2MyNi4wNyw0MS40Myw5Mi4zNCw2My4zMSwxNjcuNjIsODguMTYsNDkuMzIsMTYuMjksMTAwLjMzLDMzLjEzLDE0NCw1NywzMS40NiwxNy4yMSw1Ny41Myw0MS44LDc4LjgsNjguNDRDMzcyLDI2OS4zOCwzMDUuNTgsMjM4LjIyLDEwNy4zNSwyMjQuMTgsNzcsMjIyLDU0LjI4LDIxMC43MywzOS43NCwxOTAuNThabTg4LjM2LDQ3LjY0YzIwMi4zOCwxNi40MiwyNTQuMzYsNTEuNDYsMjkyLjY0LDc3LjI4LDQuMzYsMi45NSw4LjU4LDUuOCwxMi44NCw4LjUxLDUuMDksNy43Nyw5LjgxLDE1LjU1LDE0LjE4LDIzLjIyLTM4LjM3LTE5Ljc4LTExNS42OS00MS40Mi0yMDEuMTktNTIuMTUtLjE0LDAtLjI5LDAtLjQ0LS4wNi0xMy4zOS0xLjY3LTI2Ljk0LTMuMTMtNDAuNjEtNC4yMkMxNTAuNDksMjg2LjQzLDEzMy4yMSwyNTMuNTMsMTI4LjEsMjM4LjIyWk0zNTYuNjMsMzY3LjY4Yy03MC44My0xMi41Ny05NC41MS00My43OS0xMDItNTkuMTEsMTEwLjI0LDE0Ljg3LDE5Mi43Nyw0Ni4yNywyMDUuNjEsNjIsNi43NSwxMy41NSwxMi4yOSwyNi4yNSwxNi44MSwzNy41QzQ1MS4xLDM5MS40OSw0MDcuOTQsMzc2Ljc4LDM1Ni42MywzNjcuNjhaIi8+PC9zdmc+"
+                    width="35" height="35" alt="Inc Logo" />
+                <h6 style="color: white;">LJ University</h6>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 profile-menu">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user"></i>
+                            {{request.user.first_name}} {{request.user.last_name}}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/dashboard"><i class="fas fa-sliders-h fa-fw"></i>
+                                    Dashboard</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw"></i> Change Password</a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="/logout_view"><i class="fas fa-sign-out-alt fa-fw"></i>
+                                    Log Out</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <div class="text-center">
+        <h2 class="lj">LJ University</h2>
+        <h3 class="lj1">ADMISSION APPLICATION FORM (BATCH: 2023)</h3>
+    </div>
+    <br><br>
+    <br>
+    <br>
+    <div class="under-line"></div>
+
+    <form id="signUpForm" action="/dashboard" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- start step indicators -->
+        <div class="form-header d-flex mb-4">
+            <span class="stepIndicator" style="background-image: url('/static/image.png');
+            background-size:20px 20px;
+            background-repeat:no-repeat;
+            background-position:center;
+            ">Upload Image
+            </span>
+            <span class="stepIndicator" style="background-image: url('/static/user.png');
+            background-size:20px 20px;
+            background-repeat:no-repeat;
+            background-position:center;
+            ">Personal Details</span>
+
+            <span class="stepIndicator" style="background-image: url('/static/graduation-cap.png');
+            background-size:20px 20px;
+            background-repeat:no-repeat;
+            background-position:center;
+            ">Qualification Details</span>
+
+            <!-- <span class="stepIndicator" style="background-image: url('/static/payment.png');
+            background-size:20px 20px;
+            background-repeat:no-repeat;
+            background-position:center;
+            ">Payment</span> -->
+        </div>
+        <!-- end step indicators -->
+
+        <!-- step one -->
+        <div class="step">
+            <p class="text-center mb-4">Upload Image</p>
+            <div class="Image">
+                <img id="preview-selected-image" />
+            </div>
+            <input type="file" id="images" name="image" accept="image/*" onchange="previewImage(event);" required>
+        </div>
+
+        <!-- step two -->
+        <div class="step">
+           
+            <div class="row g-2 mb-3 ">
+                <div class="col-md-6 ">
+                    <label class="form-label">First name :</label>
+                    <input type="text" class="form-control" placeholder="" oninput="this.className = ''" name="first_name">
+                </div>
+                <div class="col-md-6  ">
+                    <label class="form-label">Surename :</label>
+                    <input type="text" class="form-control" placeholder="" oninput="this.className = ''" name="last_name">
+                </div>
+            </div>
+
+            <div class="row g-2 mb-3 ">
+                <div class="col-md-6 ">
+                    <label class="form-label">Father's Name :</label>
+                    <input type="text" class="form-control" placeholder="" oninput="this.className = ''"
+                        name="fathername">
+                </div>
+                <div class="col-md-6  ">
+                    <label class="form-label">Mother's Name :</label>
+                    <input type="text" class="form-control" placeholder="" oninput="this.className = ''"
+                        name="mothername">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Permanent Address :</label>
+                <textarea class="form-control" placeholder="" oninput="this.className = ''"
+                    name="Permanent_Address"></textarea>
+            </div>
+            <div class="row g-3 mb-3 ">
+                <div class="col-md-4 ">
+                    <label class="form-label">Country :</label>
+                    <select name="country" id="countryId" class="countries form-select" oninput="this.className = ''"
+                        required>
+                        <option value="">Select Country</option>
+                    </select>
+                </div>
+                <div class="col-md-4  ">
+                    <label class="form-label">State :</label>
+                    <select name="state" id="stateId" class="states form-select" oninput="this.className = ''" required>
+                        <option value="">Select State</option>
+                    </select>
+                </div>
+                <div class="col-md-4  ">
+                    <label class="form-label">City :</label>
+                    <select name="city" id="cityId" class="cities form-select" oninput="this.className = ''" required
+                        require>
+                        <option value="">Select City</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row g-2 mb-3 ">
+                <div class="col-md-6 ">
+                    <label class="form-label">Pincode :</label>
+                    <input type="text" class="form-control" placeholder="" oninput="this.className = ''" name="pincode">
+                </div>
+                <div class="col-md-6  ">
+                    <label class="form-label">Email (Student) :</label>
+                    <input type="email" class="form-control" placeholder="" oninput="this.className = ''" name="email">
+                </div>
+            </div>
+            <div class="row g-2 mb-3 ">
+                <div class="col-md-6 ">
+                    <label class="form-label">Mobile (Student) :</label>
+                    <input type="text" class="form-control" placeholder="" maxlength="10"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        pattern="[1-9]{1}[0-9]{9}" name="Snumber">
+                </div>
+                <div class="col-md-6  ">
+                    <label class="form-label">Mobile (Guardian) :</label>
+                    <input type="number" class="form-control" placeholder="" name="Gnumber" maxlength="10"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        pattern="[1-9]{1}[0-9]{9}">
+                </div>
+            </div>
+            <div class="row g-2 mb-3 ">
+                <div class="col-md-6 ">
+                    <label class="form-label">Birth Date (Student) :</label>
+                    <input type="text" class="form-control" placeholder="" onkeyup="
+                    var v = this.value;
+                    if (v.match(/^\d{2}$/) !== null) {
+                        this.value = v + '/';
+                    } else if (v.match(/^\d{2}\/\d{2}$/) !== null) {
+                        this.value = v + '/';
+                   }" maxlength="10" name="DOB">
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Religion :</label>
+                    <input type="text" class="form-control" placeholder="" oninput="this.className = ''"
+                        name="Religion">
+                </div>
+            </div>
+            <div class="row g-3 mb-3 ">
+                <div class="col-md-4 ">
+                    <label class="form-label">Gender :</label>
+                    <select name="gender" class="form-select" oninput="this.className = ''" required>
+                        <option value="">-- Select Gender --</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="col-md-4  ">
+                    <label class="form-label">Category :</label>
+                    <select name="category" class=" form-select" oninput="this.className = ''" required>
+                        <option value="">-- Select Category --</option>
+                        <option>General</option>
+                        <option>SC</option>
+                        <option>ST</option>
+                        <option>OBC</option>
+                        <option>SEBC</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="col-md-4  ">
+                    <label class="form-label">Course :</label>
+                    <select name="course" class=" form-select" oninput="this.className = ''" required require>
+                        <option value="">-- Select Course -- </option>
+                        <option>Software Architecture</option>
+                        <option>Cloud Computing</option>
+                        <option>Software Product Management</option>
+                        <option>Data Visualization</option>
+                        <option>Artificial Intelligence</option>
+                        <option>Data Mining</option>
+                        <option>Cyber Security</option>
+                        <option>Database Design and application</option>
+                        <option>Edge Computing</option>
+                        <option>Secure software engineering</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- step three -->
+        <div class="step ">
+            <p class="text-center mb-4">We will never sell it</p>
+            <div class="table-responsive w-100 border border-3">
+                <table class="table table-bordered  table-striped ">
+                    <thead>
+                      <tr>
+                        <th scope="col" ></th>
+                        <th scope="col" >Month & Year of Passing</th>
+                        <th scope="col" >Board / University Name</th>
+                        <th scope="col" >Total Marks / Grade Points</th>
+                        <th scope="col" >Marks / Grade Points obtained</th>
+                        <th scope="col" >Percentage / CGPA</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th  scope="row">SSC</th>
+                        <td><input type="number" class="form-control" placeholder="" oninput="this.className = ''"  name="SSCyear"></td>
+                        <td><input type="text" class="form-control" placeholder="" oninput="this.className = ''"  name="SSCBoard"></td>
+                        <td><input type="number" class="form-control" placeholder="" oninput="this.className = ''" id="t1" name="t1"></td>
+                        <td><input type="number" class="form-control" placeholder="" oninput="this.className = ''" id="m1" name="m1"></td>
+                        <td><input type="number" class="not-allowed form-control" placeholder="" oninput="this.className = ''" id="p1" name="p1" ></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">HSC</th>
+                        <td><input type="number" class="form-control" placeholder="" oninput="this.className = ''"  name="HSCyear"></td>
+                        <td><input type="text" class="form-control" placeholder="" oninput="this.className = ''"  name="HSCboard"></td>
+                        <td><input type="number" class="form-control" placeholder="" oninput="this.className = ''" id="t2" name="t2"></td>
+                        <td><input type="number" class="form-control" placeholder="" oninput="this.className = ''" id="m2" name="m2"></td>
+                        <td><input type="number" class="not-allowed form-control" placeholder="" oninput="this.className = ''" id="p2" name="p2" ></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">GRADUATION</th>
+                        <td><input type="number" class="textbox form-control" placeholder="" oninput="this.className = ''"  name="graduationYear" disabled></td>
+                        <td><input type="text" class="textbox form-control" placeholder="" oninput="this.className = ''"  name="Collegename" disabled></td>
+                        <td><input type="number" class="textbox form-control" placeholder="" oninput="this.className = ''" id="t3" name="t3" disabled></td>
+                        <td><input type="number" class="textbox form-control" placeholder="" oninput="this.className = ''" id="m3" name="m3" disabled></td>
+                        <td><input type="number" class="not-allowed form-control" placeholder="" oninput="this.className = ''" id="p3" name="p3" ></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  
+            </div>
+            <div class="checkbox d-flex mb-3">
+                <h6>If You are a Under graduate then click on checkbox.<input type="checkbox" class="checkbox" id="checkbox"></h6>
+            </div>
+            <hr>
+            <div class="mb-3">
+                <label class="form-label">HSC Stream :</label>
+                <select name="HSCstream" id="HSCstream">
+                    <option>-- Select Stream --</option>
+                    <option>Arts</option>
+                    <option>Commerce</option>
+                    <option>Science</option>
+                </select>
+            </div>
+            <hr>
+        </div>
+
+        <!-- <div class="step">
+            <div class="text-center">
+                <button class="btn btn-primary " id="rzp-button1">Process to pay</button>
+            </div>
+        </div> -->
+
+        <!-- start previous / next buttons -->
+        <div class="form-footer d-flex justify-content-end">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+        <!-- end previous / next buttons -->
+    </form>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        var options = {
+            "key": "rzp_test_yv7BXdD8PLn85O", // Enter the Key ID generated from the Dashboard
+            "amount": "30000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            "currency": "INR",
+            "name": "Acme Corp", //your business name
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": "", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            "callback_url": "https://eneqd3r9zrjok.x.pipedream.net/",
+            "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+                "name": "Gaurav Kumar", //your customer's name
+                "email": "gaurav.kumar@example.com",
+                "contact": "9000090000" //Provide the customer's phone number for better conversion rates 
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        document.getElementById('rzp-button1').onclick = function (e) {
+            rzp1.open();
+            e.preventDefault();
+        }
+    </script>.
+    <script>
+        document.querySelectorAll(".dropdown-toggle").forEach((item) => {
+            item.addEventListener("click", (event) => {
+                if (event.target.classList.contains("dropdown-toggle")) {
+                    event.target.classList.toggle("toggle-change");
+                } else if (
+                    event.target.parentElement.classList.contains("dropdown-toggle")
+                ) {
+                    event.target.parentElement.classList.toggle("toggle-change");
+                }
+            });
+        });
+
+    </script>
+    <script>var currentTab = 0; // Current tab is set to be the first tab (0)
+        showTab(currentTab); // Display the current tab
+
+        function showTab(n) {
+            // This function will display the specified tab of the form...
+            var x = document.getElementsByClassName("step");
+            x[n].style.display = "block";
+            //... and fix the Previous/Next buttons:
+            if (n == 0) {
+                document.getElementById("prevBtn").style.display = "none";
+            } else {
+                document.getElementById("prevBtn").style.display = "inline";
+            }
+            if (n == (x.length - 1)) {
+                document.getElementById("nextBtn").innerHTML = "Submit";
+            } else {
+                document.getElementById("nextBtn").innerHTML = "Next";
+            }
+            //... and run a function that will display the correct step indicator:
+            fixStepIndicator(n)
+        }
+
+        function nextPrev(n) {
+            // This function will figure out which tab to display
+            var x = document.getElementsByClassName("step");
+            // Exit the function if any field in the current tab is invalid:
+            if (n == 1 && !validateForm()) return false;
+            // Hide the current tab:
+            x[currentTab].style.display = "none";
+            // Increase or decrease the current tab by 1:
+            currentTab = currentTab + n;
+            // if you have reached the end of the form...
+            if (currentTab >= x.length) {
+                // ... the form gets submitted:
+                document.getElementById("signUpForm").submit();
+                return false;
+            }
+            // Otherwise, display the correct tab:
+            showTab(currentTab);
+        }
+
+        function validateForm() {
+            // This function deals with validation of the form fields
+            var x, y, i, valid = true;
+            x = document.getElementsByClassName("step");
+            y = x[currentTab].getElementsByTagName("input");
+            // A loop that checks every input field in the current tab:
+            for (i = 0; i < y.length; i++) {
+                // If a field is empty...
+                if (y[i].value == "") {
+                    // add an "invalid" class to the field:
+                    y[i].className += " invalid";
+                    // and set the current valid status to false
+                    valid = false;
+                }
+            }
+            // If the valid status is true, mark the step as finished and valid:
+            if (valid) {
+                document.getElementsByClassName("stepIndicator")[currentTab].className += " finish";
+            }
+            return valid; // return the valid status
+        }
+        function validateForm1() {
+            // This function deals with validation of the form fields
+            var x, y, i, valid = true;
+            x = document.getElementsByClassName("step");
+            y = x[currentTab].getElementsByTagName("textarea");
+            // A loop that checks every input field in the current tab:
+            for (i = 0; i < y.length; i++) {
+                // If a field is empty...
+                if (y[i].value == "") {
+                    // add an "invalid" class to the field:
+                    y[i].className += " invalid";
+                    // and set the current valid status to false
+                    valid = false;
+                }
+            }
+            // If the valid status is true, mark the step as finished and valid:
+            if (valid) {
+                document.getElementsByClassName("stepIndicator")[currentTab].className += " finish";
+            }
+            return valid; // return the valid status
+        }
+
+
+        function fixStepIndicator(n) {
+            // This function removes the "active" class of all steps...
+            var i, x = document.getElementsByClassName("stepIndicator");
+            for (i = 0; i < x.length; i++) {
+                x[i].className = x[i].className.replace(" active", "");
+            }
+            //... and adds the "active" class on the current step:
+            x[n].className += " active";
+        }</script>
+
+    <script>
+        function ajaxCall() {
+            this.send = function (data, url, method, success, type) {
+                type = 'json';
+                var successRes = function (data) {
+                    success(data);
+                }
+
+                var errorRes = function (xhr, ajaxOptions, thrownError) {
+
+                    console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+
+                }
+                jQuery.ajax({
+                    url: url,
+                    type: method,
+                    data: data,
+                    success: successRes,
+                    error: errorRes,
+                    dataType: type,
+                    timeout: 60000
+                });
+
+            }
+
+        }
+
+        function locationInfo() {
+            var rootUrl = "https://geodata.phplift.net/api/index.php";
+            var call = new ajaxCall();
+
+
+
+            this.getCities = function (id) {
+                jQuery(".cities option:gt(0)").remove();
+                //get additional fields
+
+                var url = rootUrl + '?type=getCities&countryId=' + '&stateId=' + id;
+                var method = "post";
+                var data = {};
+                jQuery('.cities').find("option:eq(0)").html("Please wait..");
+                call.send(data, url, method, function (data) {
+                    jQuery('.cities').find("option:eq(0)").html("Select City");
+                    var listlen = Object.keys(data['result']).length;
+
+                    if (listlen > 0) {
+                        jQuery.each(data['result'], function (key, val) {
+
+                            var option = jQuery('<option />');
+                            option.attr('value', val.name).text(val.name);
+                            jQuery('.cities').append(option);
+                        });
+                    }
+
+
+                    jQuery(".cities").prop("disabled", false);
+
+                });
+            };
+
+            this.getStates = function (id) {
+                jQuery(".states option:gt(0)").remove();
+                jQuery(".cities option:gt(0)").remove();
+                //get additional fields
+                var stateClasses = jQuery('#stateId').attr('class');
+
+
+                var url = rootUrl + '?type=getStates&countryId=' + id;
+                var method = "post";
+                var data = {};
+                jQuery('.states').find("option:eq(0)").html("Please wait..");
+                call.send(data, url, method, function (data) {
+                    jQuery('.states').find("option:eq(0)").html("Select State");
+
+                    jQuery.each(data['result'], function (key, val) {
+                        var option = jQuery('<option />');
+                        option.attr('value', val.name).text(val.name);
+                        option.attr('stateid', val.id);
+                        jQuery('.states').append(option);
+                    });
+                    jQuery(".states").prop("disabled", false);
+
+                });
+            };
+
+            this.getCountries = function () {
+                var url = rootUrl + '?type=getCountries';
+                var method = "post";
+                var data = {};
+                jQuery('.countries').find("option:eq(0)").html("Please wait..");
+                call.send(data, url, method, function (data) {
+                    jQuery('.countries').find("option:eq(0)").html("Select Country");
+
+                    jQuery.each(data['result'], function (key, val) {
+                        var option = jQuery('<option />');
+
+                        option.attr('value', val.name).text(val.name);
+                        option.attr('countryid', val.id);
+
+                        jQuery('.countries').append(option);
+                    });
+                    // jQuery(".countries").prop("disabled",false);
+
+                });
+            };
+
+        }
+
+        jQuery(function () {
+            var loc = new locationInfo();
+            loc.getCountries();
+            jQuery(".countries").on("change", function (ev) {
+                var countryId = jQuery("option:selected", this).attr('countryid');
+                if (countryId != '') {
+                    loc.getStates(countryId);
+                }
+                else {
+                    jQuery(".states option:gt(0)").remove();
+                }
+            });
+            jQuery(".states").on("change", function (ev) {
+                var stateId = jQuery("option:selected", this).attr('stateid');
+                if (stateId != '') {
+                    loc.getCities(stateId);
+                }
+                else {
+                    jQuery(".cities option:gt(0)").remove();
+                }
+            });
+        });
+
+
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149371669-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-149371669-1');
+    </script>
+
+
+    <script>
+        const previewImage = (event) => {
+            const imageFiles = event.target.files;
+            const imageFilesLength = imageFiles.length;
+            if (imageFilesLength > 0) {
+                const imageSrc = URL.createObjectURL(imageFiles[0]);
+                const imagePreviewElement = document.querySelector("#preview-selected-image");
+                imagePreviewElement.src = imageSrc;
+                imagePreviewElement.style.display = "block";
+            }
+            if (imageFilesLength > 0) {
+                const imageSrc = URL.createObjectURL(imageFiles[0]);
+                const imagePreviewElement = document.querySelector("#preview-selected-image1");
+                imagePreviewElement.src = imageSrc;
+                imagePreviewElement.style.display = "block";
+            }
+        };
+    </script>
+
+
+    <script>
+        const valueInput = document.getElementById('m1');
+        const totalInput = document.getElementById('t1');
+        const percentageOutput = document.getElementById('p1');
+        const resultDiv = document.getElementById('result');
+        const resetLink = document.getElementById('reset');
+
+        // Add event listeners to value and total inputs
+        valueInput.addEventListener('input', calculatePercentage);
+        totalInput.addEventListener('input', calculatePercentage);
+
+        // Function to calculate the percentage
+        function calculatePercentage() {
+            // Get value and total from input fields
+            const m1 = parseFloat(valueInput.value);
+            const total = parseFloat(totalInput.value);
+
+            // Calculate percentage
+            const p1 = ((m1 / total) * 100).toFixed(2);
+
+            // Display result
+            if (isNaN(p1)) {
+                percentageOutput.value = '';
+
+            } else {
+                percentageOutput.value = `${p1}`;
+
+            }
+        }
+
+        // Add event listener to reset link
+        resetLink.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent link navigation
+
+            // Reset form and result
+            valueInput.value = '';
+            totalInput.value = '';
+            percentageOutput.value = '';
+            resultDiv.style.display = 'none';
+        });
+    </script>
+
+    <script>
+        const valueInput1 = document.getElementById('m2');
+        const totalInput1 = document.getElementById('t2');
+        const percentageOutput1 = document.getElementById('p2');
+        const resultDiv1 = document.getElementById('result1');
+        const resetLink1 = document.getElementById('reset1');
+
+        // Add event listeners to value and total inputs
+        valueInput1.addEventListener('input', calculatePercentage);
+        totalInput1.addEventListener('input', calculatePercentage);
+
+        // Function to calculate the percentage
+        function calculatePercentage() {
+            // Get value and total from input fields
+            const m2 = parseFloat(valueInput1.value);
+            const t2 = parseFloat(totalInput1.value);
+
+            // Calculate percentage
+            const p2 = ((m2 / t2) * 100).toFixed(2);
+
+            // Display result
+            if (isNaN(p2)) {
+                percentageOutput1.value = '';
+
+            } else {
+                percentageOutput1.value = `${p2}`;
+
+            }
+        }
+
+        // Add event listener to reset link
+        resetLink.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent link navigation
+
+            // Reset form and result
+            valueInput1.value = '';
+            totalInput1.value = '';
+            percentageOutput1.value = '';
+            resultDiv1.style.display = 'none';
+        });
+    </script>
+    <script>
+        const valueInput2 = document.getElementById('m3');
+        const totalInput2 = document.getElementById('t3');
+        const percentageOutput2 = document.getElementById('p3');
+        const resultDiv2 = document.getElementById('result2');
+        const resetLink2 = document.getElementById('reset2');
+
+        // Add event listeners to value and total inputs
+        valueInput2.addEventListener('input', calculatePercentage);
+        totalInput2.addEventListener('input', calculatePercentage);
+
+        // Function to calculate the percentage
+        function calculatePercentage() {
+            // Get value and total from input fields
+            const m3 = parseFloat(valueInput2.value);
+            const t3 = parseFloat(totalInput2.value);
+
+            // Calculate percentage
+            const p3 = ((m3 / t3) * 100).toFixed(2);
+
+            // Display result
+            if (isNaN(p3)) {
+                percentageOutput2.value = '';
+
+            } else {
+                percentageOutput2.value = `${p3}`;
+
+            }
+        }
+
+        // Add event listener to reset link
+        resetLink.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent link navigation
+
+            // Reset form and result
+            valueInput2.value = '';
+            totalInput2.value = '';
+            percentageOutput2.value = '';
+            resultDiv2.style.display = 'none';
+        });
+    </script>
+
+    <script>
+        const checkbox = document.getElementById('checkbox');
+        const textboxes = document.getElementsByClassName('textbox');
+        checkbox.addEventListener('click', function () {
+            const isChecked = checkbox.checked;
+            for (let i = 0; i < textboxes.length; i++) {
+                textboxes[i].disabled = !isChecked;
+            }
+        });
+    </script>
+
+    <script>
+        const dropdownBtn = document.querySelectorAll(".dropdown-btn");
+        const dropdown = document.querySelectorAll(".dropdown");
+        const hamburgerBtn = document.getElementById("hamburger");
+        const navMenu = document.querySelector(".menu");
+        const links = document.querySelectorAll(".dropdown a");
+
+        function setAriaExpandedFalse() {
+            dropdownBtn.forEach((btn) => btn.setAttribute("aria-expanded", "false"));
+        }
+
+        function closeDropdownMenu() {
+            dropdown.forEach((drop) => {
+                drop.classList.remove("active");
+                drop.addEventListener("click", (e) => e.stopPropagation());
+            });
+        }
+
+        function toggleHamburger() {
+            navMenu.classList.toggle("show");
+        }
+
+        dropdownBtn.forEach((btn) => {
+            btn.addEventListener("click", function (e) {
+                const dropdownIndex = e.currentTarget.dataset.dropdown;
+                const dropdownElement = document.getElementById(dropdownIndex);
+
+                dropdownElement.classList.toggle("active");
+                dropdown.forEach((drop) => {
+                    if (drop.id !== btn.dataset["dropdown"]) {
+                        drop.classList.remove("active");
+                    }
+                });
+                e.stopPropagation();
+                btn.setAttribute(
+                    "aria-expanded",
+                    btn.getAttribute("aria-expanded") === "false" ? "true" : "false"
+                );
+            });
+        });
+
+        // close dropdown menu when the dropdown links are clicked
+        links.forEach((link) =>
+            link.addEventListener("click", () => {
+                closeDropdownMenu();
+                setAriaExpandedFalse();
+                toggleHamburger();
+            })
+        );
+
+        // close dropdown menu when you click on the document body
+        document.documentElement.addEventListener("click", () => {
+            closeDropdownMenu();
+            setAriaExpandedFalse();
+        });
+
+        // close dropdown when the escape key is pressed
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") {
+                closeDropdownMenu();
+                setAriaExpandedFalse();
+            }
+        });
+
+        // toggle hamburger menu
+        hamburgerBtn.addEventListener("click", toggleHamburger);
+    </script>
+    <!-- country, state and city script -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+{% else %}
+<!DOCTYPE html>
+<!-- Created By CodingNepal -->
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>404 Error Page | CodingNepal</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #error-page {
+            position: absolute;
+            top: 10%;
+            left: 15%;
+            right: 15%;
+            bottom: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+        }
+
+        #error-page .content {
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .content h2.header {
+            font-size: 18vw;
+            line-height: 1em;
+            position: relative;
+        }
+
+        .content h4 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            color: #000;
+            font-size: 2em;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .content p {
+            font-size: 1.2em;
+            color: #0d0d0d;
+        }
+
+        .content .btns {
+            margin: 25px 0;
+            display: inline-flex;
+        }
+
+        .content .btns a {
+            display: inline-block;
+            margin: 0 10px;
+            text-decoration: none;
+            border: 2px solid #69a6ce;
+            color: #69a6ce;
+            font-weight: 500;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .content .btns a:hover {
+            background: #69a6ce;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div id="error-page">
+        <div class="content">
+            <h2 class="header" data-text="404">
+                404
+            </h2>
+            <h4 data-text="Opps! Page not found">
+                Opps! Page not found
+            </h4>
+            <div class="btns">
+                <a href="/">return home</a>
+            </div>
+        </div>
+    </div> -->
+</body>
+
+</html>
+{% endif %}

@@ -1,0 +1,9 @@
+{% autoescape off %}   
+    Welcome to the Online Education
+
+    hello{{ name }}!
+
+    Please comfirm your email by clicking on the following link
+
+    comfirmation link: http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}

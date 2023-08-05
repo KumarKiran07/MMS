@@ -1,0 +1,41 @@
+from django.urls import include, path
+from MMSapp import views
+from django.contrib.auth import views as auth_views 
+from django.contrib.auth.decorators import login_required
+
+urlpatterns = [
+     path('', views.home, name ='home'),
+    path('adminpanel', views.adminpanel, name="adminpanel"),
+    path('addstudent', views.addstudent, name = "addstudent"),
+    path('delete-std/<int:roll>', views.delete_std, name = "delete-std"),
+    path('edit/<int:roll>', views.edit, name = "edit"),
+    path('edit/updaterecord/<int:id>', views.updaterecord, name="updaterecord"),
+    path('export_csv', views.export_csv, name="export-csv"),
+    path('adminlogout', views.adminlogout, name="adminlogout"),
+    path('logout_view', views.logout_view, name="logout_view"),
+    path('tables-data',views.tables_data, name="tables_data"),
+    path('users_profile', views.users_profile,name="users_profile"),
+    path('admissionList', views.admissionList, name="admissionList"),
+    path('about', views.about, name="about"),
+    path('contact', views.contact, name="contact"),
+    path('teachersingle', views.teachersingle, name="teachersingle"),
+    path('teacherswithoutfilter', views.teacherswithoutfilter, name="teacherswithoutfilter"),
+    path('gallery3', views.gallery3 , name="gallery3"),
+    path('teachers', views.teachers , name="teachers"),
+    path('blog', views.blog , name="blog"),
+    path('blogdetails', views.blogdetails , name="blogdetails"),
+    path('coursedetails', views.coursedetails , name="coursedetails"),
+    path('modal', views.modal, name="modal"),
+    path('SignIn',views.SignIn, name="SignIn"),
+    path('register',views.register, name="register"),
+    path('activate/<uidb64>/<token>', views.activate, name="activate"),
+    # path('admissionForm', views.admissionForm, name="admissionForm"),
+    path('country', views.country, name="country"),
+    path('delete-Al/<int:image>', views.delete_Al, name = "delete-Al"),
+    path('dashboard', login_required(views.dashboard), name='dashboard'),
+    path('AdmissionformPdf', views.AdmissionformPdf, name="AdmissionformPdf"),
+    path('payment', views.payment, name="payment"),
+    path('Student-admission-Pdf/<int:application_number_integer>', views.Student_admission_Pdf, name="Student_admission_Pdf"),
+    path('re-generate/<str:application_number>', views.re_generate, name="Re-generate"),
+    path('pdfGenerate/<int:application_number_integer', views.pdf, name="pdfGenerate"),
+]

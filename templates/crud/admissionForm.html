@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="css/base.css" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+    <script src="/static/online/js/countrystatecity.js?v2"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-6883622550208397",
+            enable_page_level_ads: true
+        });
+    </script>
+</head>
+
+<body class="bg-image"  style="background-image: url('/static/back1.jpg'); background-repeat:no-repeat; background-attachment: fixed; width:auto; " >
+    <div class="" >
+        <div class="container  mt-5 mb-5 ">
+            <div class="row  ">
+                <div class="offset-lg-3 offset-md-1 col-lg-6 col-md-10 shadow-lg   border border-info-subtle rounded-3">
+                    <h6 class="fw-semibold fs-5 text-uppercase  text-white text-center mt-3">Admission Form</h6>
+                    <hr>
+                    {% for message in messages %}
+                        <div class="alert alert-success alert-dismissible fade show">
+                        <strong class="msg-1">{{message}}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>      
+                        </div>
+                    {% endfor %}
+                    <form id="myForm" novalidate method="post" action="admissionForm" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div
+                            class="bg-primary bg-opacity-10 my-4 p-3 d-flex align-items-center justify-content-between rounded">
+                            <span class="fw-semibold">Imgae Information</span>
+                            <i class="bi bi-image-fill text-secondary fs-5"></i>
+                        </div>
+                        <div class="text-center">
+                            <img class="rounded mx-auto d-block w-25 h-25" id="preview-selected-image" />
+                        </div>
+                        <div class="mb-6">
+                            <div class=" mb-6">
+                                <label for="formFileSm" class="form-label">Upload Passport size photo</label>
+                                <input class="form-control form-control-sm" name="image" id="file-upload" accept="image/*"
+                                    type="file" onchange="previewImage(event);">
+                                    
+                                <div class="invalid-feedback">Please Upload Passport Photo.</div>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-primary bg-opacity-10 my-4 p-3 d-flex align-items-center justify-content-between rounded">
+                            <span class="fw-semibold">Basic Information</span>
+                            <i class="bi bi-bookmark-fill text-secondary fs-5"></i>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="fname" name="fname" required
+                                    placeholder="Enter First Name" />
+                                <div class="invalid-feedback">Please enter your name.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lname" name="lname" required
+                                    placeholder="Enter Last Name" />
+                                <div class="invalid-feedback">Please enter your name.</div>
+                            </div>
+                        </div>
+
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="Father Name" class="form-label">Gender</label>
+                                <div class="d-flex col-md-6">
+
+                                    <div class="form-check me-3">
+                                        <input class="form-check-input" type="radio" value="male" name="gender" id="male" checked
+                                            required />
+                                        <label class="form-check-label" for="male"> Male </label>
+                                    </div>
+                                    <div class="form-check me-3">
+                                        <input class="form-check-input" type="radio" value="female" name="gender" id="female" />
+                                        <label class="form-check-label" for="female"> Female </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Mother Name" class="form-label">Date Of Birth</label>
+                                <input type="date" class="form-control" id="date" name="dob" required placeholder="" />
+                                <div class="invalid-feedback">Please Enter Your Date Of Birth</div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="Father Name" class="form-label">Father Name</label>
+                                <input type="text" class="form-control" id="father" name="father" required
+                                    placeholder="Enter Your Father Name" />
+                                <div class="invalid-feedback">Please Enter Father Name</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="Mother Name" class="form-label">Mother Name</label>
+                                <input type="text" class="form-control" id="mother" name="mother" required
+                                    placeholder="Enter Your Mother Name" />
+                                <div class="invalid-feedback">Please Enter Mother Name</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required
+                                placeholder="Enter Email Address" />
+                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                        </div>
+
+                        <div
+                            class="bg-info bg-opacity-10 my-4 p-3 d-flex align-items-center justify-content-between rounded">
+                            <span class="fw-semibold">Contact Information</span>
+                            <i class="bi bi-phone-fill text-secondary fs-5"></i>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="text" class="form-control" id="phone" name="phone" required pattern="[0-9]{10}"
+                                placeholder="Enter Phone Number" />
+                            <div class="invalid-feedback">Please enter a valid 10-digit phone number.</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <textarea class="form-control" id="address" name="address" required
+                                placeholder="Enter Complete Address"></textarea>
+                            <div class="invalid-feedback">Please enter your address.</div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <label for="Country" class="form-label">Country</label>
+                                        <select name="country" class="countries form-select" id="countryId">
+                                            <option value="">Select Country</option>
+                                        </select>
+                                        <div class="invalid-feedback">Please select a Country.</div>
+
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="State" class="form-label">State</label>
+                                        <select name="state" class="states form-select" id="stateId">
+                                            <option value="">Select State</option>
+                                        </select>
+                                        <div class="invalid-feedback">Please select a State.</div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="City" class="form-label">City</label>
+                                        <select name="city" class="cities form-select" id="cityId">
+                                            <option value="">Select City</option>
+                                            <div class="invalid-feedback">Please select a City.</div>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="pincode" class="form-label">Pincode</label>
+                                <input type="text" class="form-control" id="pincode" name="pincode" required
+                                    placeholder="Enter Pincode" />
+                                <div class="invalid-feedback">Please enter a valid pincode.</div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="bg-warning bg-opacity-10 my-4 p-3 d-flex align-items-center justify-content-between rounded">
+                            <span class="fw-semibold">Education Information</span>
+                            <i class="bi bi-book-fill text-secondary fs-5"></i>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="10th" class="form-label">Name of the SSC</label>
+                                <input type="text" class="form-control" id="class10" name="class10" placeholder="Enter Name of the SSC"
+                                    required />
+                                <div class="invalid-feedback">Please Enter Name of the SSC.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="" class="form-label">10<sup>th</sup> Class Percentage/CGPA</label>
+                                <input type="text" class="form-control" id="mark10" name="marks10"
+                                    placeholder="Enter 10th class percentage/CGPA" required />
+                                <div class="invalid-feedback">Please Enter 12th class percentage/CGPA.</div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="12th" class="form-label">Name of the HSC</label>
+                                <input type="text" class="form-control" id="class12" name="class12" placeholder="Enter Name of the HSC"
+                                    required />
+                                <div class="invalid-feedback">Please Enter Name of the HSC.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="endDate" class="form-label">12<sup>th</sup> class percentage/CGPA.</label>
+                                <input type="text" class="form-control" id="mark12" name="marks12"
+                                    placeholder="Enter 12th class percentage/CGPA." required />
+                                <div class="invalid-feedback">Please Enter 12th class percentage/CGPA.</div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="12th" class="form-label">Name of the Graduation</label>
+                                <input type="text" class="form-control" id="graduation" name="graduation"
+                                    placeholder="(University/College/Institude)" required />
+                                <div class="invalid-feedback">Please Enter Name of the HSC.</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="endDate" class="form-label">Graduation percentage/CGPA.</label>
+                                <input type="text" class="form-control" id="graduationMark" name="graduationMarks"
+                                    placeholder="Enter Graduation percentage/CGPA." required />
+                                <div class="invalid-feedback">Please Enter Graduation percentage/CGPA.</div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="Course" class="form-label">Course</label>
+                                <select name="course" class="form-select" id="course">
+                                    <option value="" >Select Course</option>
+                                    <option >Software Architecture</option>
+                                    <option >Cloud Computing</option>
+                                    <option >Software Product Management</option>
+                                    <option >Data Visualization</option>
+                                    <option >Artificial Intelligence</option>
+                                    <option >Data Mining</option>
+                                    <option >Cyber Security</option>
+                                    <option >Database Design and application</option>
+                                    <option >Edge Computing</option>
+                                    <option >Secure software engineering</option>
+                                </select>
+                                <div class="invalid-feedback">Please select a Course.</div>
+
+                            </div>
+                        </div>
+                        <br>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agree" required />
+                            <label class="form-check-label" for="agree">I agree to the terms and conditions</label>
+                            <div class="invalid-feedback">You must agree to the terms and conditions.</div>
+                        </div>
+                        <div class="mb-3 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-success me-2">Register Now</button>
+                            <button type="reset" class="btn btn-danger">Clear Details</button>
+                        </div>
+                    </form>
+                    
+                </div>
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149371669-1"></script>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag() { dataLayer.push(arguments); }
+                    gtag('js', new Date());
+
+                    gtag('config', 'UA-149371669-1');
+                </script>
+
+                <!--Row End-->
+            </div>
+        </div>
+        <script>
+            const previewImage = (event) => {
+                const imageFiles = event.target.files;
+                const imageFilesLength = imageFiles.length;
+                if (imageFilesLength > 0) {
+                    const imageSrc = URL.createObjectURL(imageFiles[0]);
+                    const imagePreviewElement = document.querySelector("#preview-selected-image");
+                    imagePreviewElement.src = imageSrc;
+                    imagePreviewElement.style.display = "block";
+                }
+            };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            (function () {
+                "use strict";
+                var form = document.getElementById("myForm");
+
+                form.addEventListener("submit", function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    //Phone Validation
+                    let phoneInput = document.getElementById("phone");
+                    let phoneRegex = /^[0-9]{10}$/;
+                    if (!phoneRegex.test(phoneInput.value)) {
+                        phoneInput.setCustomValidity("Please enter a valid 10-digit phone number.");
+                    } else {
+                        phoneInput.setCustomValidity("");
+                    }
+
+                    //Pincode Validation
+                    let pincodeInput = document.getElementById("pincode");
+                    let pinRegex = /^\d{6}$/;
+                    if (!pinRegex.test(pincodeInput.value)) {
+                        pincodeInput.setCustomValidity("Please enter a valid pincode.");
+                    } else {
+                        pincodeInput.setCustomValidity("");
+                    }
+
+                    // Custom validation for select field
+                    var countryInput = document.getElementById("countryId");
+                    if (countryInput.value === "") {
+                        countryInput.setCustomValidity("Please select a country.");
+                    } else {
+                        countryInput.setCustomValidity("");
+                    }
+
+                    var stateInput = document.getElementById("stateId");
+                    if (stateInput.value === "") {
+                        stateInput.setCustomValidity("Please select a state.");
+                    } else {
+                        stateInput.setCustomValidity("");
+                    }
+
+                    var cityInput = document.getElementById("cityId");
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please select a city.");
+                    } else {
+                        cityInput.setCustomValidity("");
+                    }
+
+                    var cityInput = document.getElementById("file-upload");
+                    var maxMb = 2;
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please Upload passport photo.");
+                    } else {
+                        cityInput.setCustomValidity("");
+                    }
+
+                    var cityInput = document.getElementById("male");
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please select Gender.");
+                    } else {
+                        cityInput.setCustomValidity("");
+                    }
+
+                    var cityInput = document.getElementById("female");
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please select Gender.");
+                    } else {
+                        cityInput.setCustomValidity("");
+                    }
+
+                    var cityInput = document.getElementById("mark12");
+                    var maxMb = 2;
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please Enter a Class 10th Marks.");
+                    } else {
+                        cityInput.setCustomValidity("");
+                    }
+
+                    var cityInput = document.getElementById("mark10");
+                    var maxMb = 2;
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please Enter a Class 10th Marks.");
+                    } else {
+                        cityInput.setCustomValidity("");
+                    }
+
+                    var cityInput = document.getElementById("class10");
+                    var maxMb = 2;
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please Enter a Name of SSC.");
+                    } else {
+                        cityInput.setCustomValidity("");
+                    }
+
+                    var cityInput = document.getElementById("class12");
+                    var maxMb = 2;
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please Enter a Name of HSC.");
+                    } else {
+                        cityInput.setCustomValidity("");
+                    }
+
+                    var cityInput = document.getElementById("graduationMark");
+                    var maxMb = 2;
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please Enter a Graduation Mark.");
+                    } else {
+
+                        cityInput.setCustomValidity("");
+                    }
+
+
+                    var cityInput = document.getElementById("graduation");
+                    var maxMb = 2;
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please Enter a Graduation details.");
+                    } else {
+                        cityInput.setCustomValidity("");
+                    }
+
+
+                    var cityInput = document.getElementById("course");
+                    var maxMb = 2;
+                    if (cityInput.value === "") {
+                        cityInput.setCustomValidity("Please Select the Course.");
+                    } else {
+                        cityInput.setCustomValidity("");
+                    }
+
+
+                    form.classList.add("was-validated");
+                });
+            })();
+        </script>
+
+        <script>
+
+            function ajaxCall() {
+                this.send = function (data, url, method, success, type) {
+                    type = 'json';
+                    var successRes = function (data) {
+                        success(data);
+                    }
+
+                    var errorRes = function (xhr, ajaxOptions, thrownError) {
+
+                        console.log(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+
+                    }
+                    jQuery.ajax({
+                        url: url,
+                        type: method,
+                        data: data,
+                        success: successRes,
+                        error: errorRes,
+                        dataType: type,
+                        timeout: 60000
+                    });
+
+                }
+
+            }
+
+            function locationInfo() {
+                var rootUrl = "https://geodata.phplift.net/api/index.php";
+                var call = new ajaxCall();
+
+
+
+                this.getCities = function (id) {
+                    jQuery(".cities option:gt(0)").remove();
+                    //get additional fields
+
+                    var url = rootUrl + '?type=getCities&countryId=' + '&stateId=' + id;
+                    var method = "post";
+                    var data = {};
+                    jQuery('.cities').find("option:eq(0)").html("Please wait..");
+                    call.send(data, url, method, function (data) {
+                        jQuery('.cities').find("option:eq(0)").html("Select City");
+                        var listlen = Object.keys(data['result']).length;
+
+                        if (listlen > 0) {
+                            jQuery.each(data['result'], function (key, val) {
+
+                                var option = jQuery('<option />');
+                                option.attr('value', val.name).text(val.name);
+                                jQuery('.cities').append(option);
+                            });
+                        }
+
+
+                        jQuery(".cities").prop("disabled", false);
+
+                    });
+                };
+
+                this.getStates = function (id) {
+                    jQuery(".states option:gt(0)").remove();
+                    jQuery(".cities option:gt(0)").remove();
+                    //get additional fields
+                    var stateClasses = jQuery('#stateId').attr('class');
+
+
+                    var url = rootUrl + '?type=getStates&countryId=' + id;
+                    var method = "post";
+                    var data = {};
+                    jQuery('.states').find("option:eq(0)").html("Please wait..");
+                    call.send(data, url, method, function (data) {
+                        jQuery('.states').find("option:eq(0)").html("Select State");
+
+                        jQuery.each(data['result'], function (key, val) {
+                            var option = jQuery('<option />');
+                            option.attr('value', val.name).text(val.name);
+                            option.attr('stateid', val.id);
+                            jQuery('.states').append(option);
+                        });
+                        jQuery(".states").prop("disabled", false);
+
+                    });
+                };
+
+                this.getCountries = function () {
+                    var url = rootUrl + '?type=getCountries';
+                    var method = "post";
+                    var data = {};
+                    jQuery('.countries').find("option:eq(0)").html("Please wait..");
+                    call.send(data, url, method, function (data) {
+                        jQuery('.countries').find("option:eq(0)").html("Select Country");
+
+                        jQuery.each(data['result'], function (key, val) {
+                            var option = jQuery('<option />');
+
+                            option.attr('value', val.name).text(val.name);
+                            option.attr('countryid', val.id);
+
+                            jQuery('.countries').append(option);
+                        });
+                        // jQuery(".countries").prop("disabled",false);
+
+                    });
+                };
+
+            }
+
+            jQuery(function () {
+                var loc = new locationInfo();
+                loc.getCountries();
+                jQuery(".countries").on("change", function (ev) {
+                    var countryId = jQuery("option:selected", this).attr('countryid');
+                    if (countryId != '') {
+                        loc.getStates(countryId);
+                    }
+                    else {
+                        jQuery(".states option:gt(0)").remove();
+                    }
+                });
+                jQuery(".states").on("change", function (ev) {
+                    var stateId = jQuery("option:selected", this).attr('stateid');
+                    if (stateId != '') {
+                        loc.getCities(stateId);
+                    }
+                    else {
+                        jQuery(".cities option:gt(0)").remove();
+                    }
+                });
+            });
+
+
+        </script>
+    </div>
+</body>
+
+</html>

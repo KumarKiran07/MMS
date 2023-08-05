@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <link rel="stylesheet" href="static/login/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="static/login/css/style.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Lobster");
+        @import url("https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css");
+        .alert .inner {
+          display: block;
+          padding: 6px;
+          margin: 6px;
+          border-radius: 3px;
+          border: 1px solid rgb(180,180,180);
+          background-color: rgb(212,212,212);
+        }
+        
+        .alert .close {
+          float: right;
+          margin: 3px 12px 0px 0px;
+          cursor: pointer;
+        }
+        
+        .alert .inner,.alert .close {
+          color: rgb(88,88,88);
+        }
+        
+        .alert input {
+          display: none;
+        }
+        
+        .alert input:checked ~ * {
+          animation-name: dismiss,hide;
+          animation-duration: 300ms;
+          animation-iteration-count: 1;
+          animation-timing-function: ease;
+          animation-fill-mode: forwards;
+          animation-delay: 0s,100ms;
+        }
+        
+        .alert.error .inner {
+          border: 1px solid rgb(238,211,215);
+          background-color: rgb(242,222,222);
+        }
+        
+        .alert.error .inner,.alert.error .close {
+          color: rgb(185,74,72);
+        }
+        
+        .alert.success .inner {
+          border: 1px solid rgb(214,233,198);
+          background-color: rgb(223,240,216);
+        }
+        
+        .alert.success .inner,.alert.success .close {
+          color: rgb(70,136,71);
+        }
+        
+        .alert.info .inner {
+          border: 1px solid rgb(188,232,241);
+          background-color: rgb(217,237,247);
+        }
+        
+        .alert.info .inner,.alert.info .close {
+          color: rgb(58,135,173);
+        }
+        
+        .alert.warning .inner {
+          border: 1px solid rgb(251,238,213);
+          background-color: rgb(252,248,227);
+        }
+        
+        .alert.warning .inner,.alert.warning .close {
+          color: rgb(192,152,83);
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <div class="signup-form">
+                        <h2 class="form-title">Sign up</h2>
+                        {% for message in messages %}
+                        <div class="alert error">
+                            <input type="checkbox" id="alert1"/>
+                            <p class="inner">
+                                <strong>{{message}}</strong>
+                            </p>
+                        </div>
+                        {% endfor %}
+                        <form method="POST" class="register-form" action="/register">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="username" id="username" placeholder="Enter Username" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="fname" id="fname" placeholder="Your Firstname" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="lname" id="lname" placeholder="Your Lastname" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="email"><i class="zmdi zmdi-email"></i></label>
+                                <input type="email" name="email" id="email" placeholder="Your Email" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="pass"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="pass1" id="pass1" placeholder="Password" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
+                                <input type="password" name="pass2" id="pass2" placeholder="Repeat your password" required/>
+                            </div>
+                            <div class="form-group form-button">
+                                <input type="submit" name="signup" id="signup" class="form-submit" value="Register"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="signup-image">
+                        <figure><img src="static/login/images/signup-image.jpg" alt="sing up image"></figure>
+                        <a href="/SignIn" class="signup-image-link">I am already member</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="static/login/vendor/jquery/jquery.min.js"></script>
+    <script src="static/login/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

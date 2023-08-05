@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admission Application Form-PDF</title>
+    <style>
+        body {
+            position: relative;
+            margin: 0 auto;
+            background: #FFFFFF;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-family: Arial;
+        }
+
+        .lj {
+            padding-top: 10px;
+            font-family: Roboto-Bold;
+            font-size: 30px;
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: bold;
+            color: white;
+
+        }
+
+        .lj1 {
+            margin-top: -50px;
+            font-family: roboto-medium;
+            font-size: 20px;
+            text-transform: uppercase;
+            text-align: center;
+            color: #2b70b4;
+        }
+
+        .Img {
+            display: flex;
+            justify-content: center;            
+        }
+
+        
+
+    </style>
+</head>
+
+<body>
+    <div class="text-center" style="background-color: #212529;">
+        <div class="lj"><img src="C:\Users\ks\Desktop\Python website\MMS\static\logo.png" style="width: 40px; height:40px; margin-left:150px;">LJ University</div>
+        <div class="lj1">ADMISSION APPLICATION FORM (BATCH: 2023)</div>
+    </div>
+    <hr>
+    <div style="background-color: #212529;padding-top:10px;  padding-bottom:0px;">
+        <div style="font-size: 18px; color:white; padding-left: 335px;">Image</div>
+    </div>
+    <table style="border: #212529 solid 0.5px; width:100%; margin-top:15px; margin-bottom:15px;">
+        <td style=" width:20%; padding: 5px 5px;"><div style="width:150px; height:200px;"><img src="{{admission_form.image.path}}" style=""></div></td>
+        <td style=" padding: 0px 50px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Application Number : <span style="font-size: 15px; font-weight: 100;">{{admission_form.application_number_integer}}</span></div> </td>
+    </table>
+    <div style="background-color: #212529;padding-top:10px;  padding-bottom:0px;">
+    <div style="font-size: 18px;  color:white;padding-left: 290px;">Personal Details</div>
+    </div>
+    <table style="border: #212529 solid 0.5px; width:100%; margin-top:15px;">
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">First name : <span style="font-size: 15px; font-weight: 100;">{{admission_form.first_name}}</span></div> </td>
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Surename : <span style="font-size: 15px; font-weight: 100;">{{admission_form.last_name}}</span></div> </td>
+    </table>
+
+    <table style="border: #212529 solid 0.5px; width:100%;">
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Father's Name : <span style="font-size: 15px; font-weight: 100;">{{admission_form.fathername}}</span></div></td> 
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Mother's Name : <span style="font-size: 15px; font-weight: 100;">{{admission_form.mothername}}</span></div></td> 
+    </table>
+
+    <table style="border: #212529 solid 0.5px; width:100%;">
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Permanent Address : <span style="font-size: 15px; font-weight: 100;">{{admission_form.Permanent_Address}}</span></div></td> 
+    </table>
+
+    <table style="border: #212529 solid 0.5px; width:100%;">
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Country : <span style="font-size: 15px; font-weight: 100;">{{admission_form.country}}</span></div></td> 
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">State : <span style="font-size: 15px; font-weight: 100;">{{admission_form.state}}</span></div></td> 
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">City : <span style="font-size: 15px; font-weight: 100;">{{admission_form.city}}</span></div></td> 
+    </table>
+
+    <table style="border: #212529 solid 0.5px; width:100%;">
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Email : <span style="font-size: 15px; font-weight: 100;">{{admission_form.email}}</span></div></td> 
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Pincode : <span style="font-size: 15px; font-weight: 100;">{{admission_form.pincode}}</span></div></td> 
+    </table>
+
+    <table style="border: #212529 solid 0.5px; width:100%;">
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Mobile (Student) : <span style="font-size: 15px; font-weight: 100;">{{admission_form.Snumber}}</span></div></td> 
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Mobile (Guardian) : <span style="font-size: 15px; font-weight: 100;">{{admission_form.Gnumber}}</span></div></td> 
+    </table>
+
+    <table style="border: #212529 solid 0.5px; width:100%;">
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Birth Date (Student) : <span style="font-size: 15px; font-weight: 100;">{{admission_form.DOB}}</span></div></td> 
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Religion :  <span style="font-size: 15px; font-weight: 100;">{{admission_form.Religion}}</span></div></td>
+    </table>
+
+    <table style="border: #212529 solid 0.5px; width:100%;">
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Gender : <span style="font-size: 15px; font-weight: 100;">{{admission_form.gender}}</span></div></td> 
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Category : <span style="font-size: 15px; font-weight: 100;">{{admission_form.category}}</span></div></td> 
+    </table>
+
+    <table style="border: #212529 solid 0.5px; width:100%; margin-bottom:15px;">
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">Course : <span style="font-size: 15px; font-weight: 100;">{{admission_form.course}}</span></div></td> 
+        <td style=" padding: 0px 10px; padding-bottom:3px; padding-top:8px; "><div style="font-size: 15px; font-weight: bold;">HSC Stream : <span style="font-size: 15px; font-weight: 100;">{{admission_form.HSCstream}}</span></div></td> 
+    </table>
+    
+    <div style="background-color: #212529;padding-top:10px;  padding-bottom:0px;">
+    <div style="font-size: 18px; color:white;padding-left: 275px;">Qualification Details</div>
+    </div>
+    <table style="border: #212529 solid 0.5px; margin-top:15px; margin-bottom:10px;">
+        <thead>
+            <tr>
+                <th style=" padding: 3px 0px;" ></th>
+                <th style=" padding-top:5px">Month & Year of Passing</th>
+                <th style=" padding-top:5px">Board / University Name</th>
+                <th style=" padding-top:5px">Total Marks / Grade Points</th>
+                <th style=" padding-top:5px">Marks / Grade Points obtained</th>
+                <th style=" padding-top:5px">Percentage / CGPA</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th style="padding-top:5px">SSC</th>
+                <td style=" padding-top:5px; padding-left:15px;" > <span>{{admission_form.SSCyear}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" > <span>{{admission_form.SSCBoard}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" > <span>{{admission_form.t1}}</span> </td>
+                <td style=" padding-top:5px; padding-left:15px;" > <span>{{admission_form.m1}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" > <span>{{admission_form.p1}}</span></td>
+            </tr>
+            <tr>
+                <th style=" padding-top:5px">HSC</th>
+                <td style=" padding-top:5px; padding-left:15px;" > <span>{{admission_form.HSCyear}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" > <span>{{admission_form.HSCboard}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" > <span>{{admission_form.t2}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" > <span>{{admission_form.m2}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" > <span>{{admission_form.p2}}</span></td>
+            </tr>
+            <tr>
+                <th style=" padding-top:5px">GRADUATION</th>
+                <td style=" padding-top:5px; padding-left:15px;" ><span>{{admission_form.graduationYear}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" ><span>{{admission_form.Collegename}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" ><span>{{admission_form.t3}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" ><span>{{admission_form.m3}}</span></td>
+                <td style=" padding-top:5px; padding-left:15px;" ><span>{{admission_form.p3}}</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</body>
+
+</html>
